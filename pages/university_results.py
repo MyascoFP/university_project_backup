@@ -121,11 +121,17 @@ def update_graphs(selected_university):
         'citations': 'Цитирования',
         'income': 'Доход от индустрии'
     }
+
+    gender_labels = {
+        'female_percentage': 'Женщины',
+        'male_percentage': 'Мужчины'
+    }
     
     # Обновляем линии графиков
     ranking_fig.update_traces(mode='lines', line=dict(width=4))  # Утолщаем линии и убираем маркеры
     scores_fig.update_traces(mode='lines', line=dict(width=4))  # Утолщаем линии и убираем маркеры
     
+    gender_ratio_fig.for_each_trace(lambda t: t.update(name=gender_labels[t.name]))
 
     # Обновляем оси графиков
     scores_fig.for_each_trace(lambda t: t.update(name=criteria_labels[t.name]))
